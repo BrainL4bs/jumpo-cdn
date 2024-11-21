@@ -1,0 +1,23 @@
+<script>
+    const imageMappings = {
+        "/img/banners/main/home_page_top_casino_games_section/16063.webp": "https://raw.githubusercontent.com/BrainL4bs/jumpo-cdn/refs/heads/main/big-bass.gif",
+    };
+
+    const checkImages = () => {
+        document.querySelectorAll("img").forEach(img => {
+            const currentSrc = new URL(img.src, window.location.origin).pathname.split("?")[0];
+            console.log("Bulunan görsel yolu (tam URL işleme):", currentSrc);
+
+            if (imageMappings[currentSrc]) {
+                img.src = imageMappings[currentSrc];
+            }
+        });
+    };
+
+    // Dinamik yükleme için MutationObserver kullan
+    const observer = new MutationObserver(checkImages);
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // İlk kontrol
+    checkImages();
+</script>
