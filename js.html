@@ -1,23 +1,158 @@
+
+
 <script>
-    const imageMappings = {
-        "/img/banners/main/home_page_top_casino_games_section/16063.webp": "https://raw.githubusercontent.com/BrainL4bs/jumpo-cdn/refs/heads/main/big-bass.gif",
+    // Metin eşlemeleri
+    const textMappings = {
+        "Anti_Money_Laundering_Policy_Title": "Anti Money Laundering Policy",
+        "Adillik_ve_RNG_Test_Yontemleri": "Fairness and RNG Testing Methods",
+        "Sartlar_Ve_Kosullar_Title": "Terms and Conditions",
+        "Sorumlu_Oyunculuk_Title": "Responsible Gaming",
+        "Kara_Para_Aklama_Onleme_Politikasi": "Anti Money Laundering Policy",
+        "Gizlilik_ve_Kisisel_Verilerin_Yonetimi": "Privacy and Personal Data Management",
     };
 
-    const checkImages = () => {
-        document.querySelectorAll("img").forEach(img => {
-            const currentSrc = new URL(img.src, window.location.origin).pathname.split("?")[0];
-            console.log("Bulunan görsel yolu (tam URL işleme):", currentSrc);
+    // Sayfadaki tüm <a> etiketlerinde metin değiştiren fonksiyon
+    window.addEventListener("load", () => {
+        console.log("Metin değiştirme işlemi başlatıldı...");
 
-            if (imageMappings[currentSrc]) {
-                img.src = imageMappings[currentSrc];
+        // Tüm <a> etiketlerini seç
+        const allLinks = document.querySelectorAll("a");
+
+        allLinks.forEach(element => {
+            const currentText = element.textContent.trim(); // Mevcut metni al
+            console.log("Bulunan metin:", currentText);
+
+            // Metin eşleşmesi yaparken boşlukları ve karakter farklarını göz önünde bulundurun
+            let mappedText = textMappings[currentText];
+
+            // Eğer tam eşleşme bulunmazsa, küçük harfe çevirip kontrol et
+            if (!mappedText) {
+                // Tam metin eşleşmesi için ve küçük harfe duyarsız eşleştirme
+                mappedText = Object.keys(textMappings).find(key => key.toLowerCase().trim() === currentText.toLowerCase().trim());
+
+                // Eşleşme varsa, yeni metni al
+                if (mappedText) {
+                    mappedText = textMappings[mappedText];
+                }
             }
+
+            // Eşleşme varsa metni değiştir
+            if (mappedText) {
+                console.log(`Eşleşme bulundu, metin değiştiriliyor: "${currentText}" -> "${mappedText}"`);
+                element.textContent = mappedText; // Yeni metni uygula
+            }
+            console.log("--------------------------------------------------");
         });
-    };
 
-    // Dinamik yükleme için MutationObserver kullan
-    const observer = new MutationObserver(checkImages);
-    observer.observe(document.body, { childList: true, subtree: true });
-
-    // İlk kontrol
-    checkImages();
+        console.log("Metin değiştirme işlemi tamamlandı.");
+    });
 </script>
+
+
+<style>
+    .l0--placeholder2-item{
+        height: 80px !important;
+    }
+
+    .featured-product-2 a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        gap: 0.5rem;
+        height: 80px;
+    }
+
+    .featured-product-2 a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        gap: 0.5rem;
+        height: 80px;
+    }
+
+
+    .featured-product-2 a span{
+        width: max-content !important;
+        font-size: 30px !important;
+    }
+
+</style>
+
+
+<style>
+    .header-block_right-side .tb--reg-btn-box .btn{
+        background: radial-gradient(circle, rgba(0, 94, 44, 1) 0%, rgba(0, 17, 8, 1) 100%);
+        border: 0.01em solid white;
+        color: white;
+    }
+
+</style>
+
+<style>
+    .l0--top-space.has--top-banner {
+        margin-top: 585px;
+    }
+
+    .l0--placeholder1-slider_1 .slick-dots {
+        top: auto;
+    }
+
+    .footer-menu-block_title {
+        color: #ffffff;
+    }
+
+    .l0--placeholder1-slider_1 .slick-list:after {
+        height: 60px;
+    }
+
+    .customer-service i {
+        opacity: 1;
+    }
+
+    .btn {
+
+        font-size: 15px !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+    }
+
+    .header-block_right-side .tb--reg-btn-box .btn {
+        background: radial-gradient(circle, rgba(0, 94, 44, 1) 0%, rgba(0, 17, 8, 1) 100%);
+        border: 0.01em solid white;
+        color: white;
+    }
+
+    @media (max-width: 1024px) {
+        .l0--top-space.has--top-banner {
+            margin-top: 0px;
+        }
+    }
+
+    @media only screen and (min-width: 1024px) {
+        .logoBlock_img {
+            max-height: 50px !important;
+            width: 100% !important;
+        }
+    }
+
+    .prom-block_item a{
+        font-size: 13px;
+        font-weight: 500;
+    }
+
+    .menu--block-item {
+        font-weight: 600;
+    }
+
+    .tb--section-header.tb--section-header_icon {
+
+        background: rgb(0, 94, 44);
+        background: linear-gradient(90deg, #104b03 0%, #104b0300 100%);
+        padding-left: 20px;
+        border-radius: 100px;
+        border-bottom: 0;
+        font-size: 15px;
+    }
+</style>
